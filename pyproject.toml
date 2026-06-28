@@ -7,7 +7,6 @@ requires-python = ">=3.11"
 dependencies = [
     "numpy>=1.26",
     "pillow>=10.0",
-    "ruff>=0.10",
     "torch>=2.9",
     "torchvision>=0.21",
     "transformers>=5.2",
@@ -25,4 +24,5 @@ packages = ["src/simple_infer"]
 [dependency-groups]
 dev = [
     "pre-commit>=4.6.0",
+    "ruff>=0.10",
 ]

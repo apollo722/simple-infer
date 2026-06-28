@@ -1082,7 +1082,6 @@ dependencies = [
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "pillow" },
-    { name = "ruff" },
     { name = "torch" },
     { name = "torchvision" },
     { name = "transformers" },
@@ -1091,20 +1090,23 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "pre-commit" },
+    { name = "ruff" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "numpy", specifier = ">=1.26" },
     { name = "pillow", specifier = ">=10.0" },
-    { name = "ruff", specifier = ">=0.10" },
     { name = "torch", specifier = ">=2.9" },
     { name = "torchvision", specifier = ">=0.21" },
     { name = "transformers", specifier = ">=5.2" },
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "pre-commit", specifier = ">=4.6.0" }]
+dev = [
+    { name = "pre-commit", specifier = ">=4.6.0" },
+    { name = "ruff", specifier = ">=0.10" },
+]
 
 [[package]]
 name = "sympy"
