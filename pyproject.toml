@@ -1,0 +1,28 @@
+[project]
+name = "simple-infer"
+version = "0.1.0"
+description = "Hugging Face inference baseline for a staged inference project."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "pillow>=10.0",
+    "ruff>=0.10",
+    "torch>=2.9",
+    "torchvision>=0.21",
+    "transformers>=5.2",
+]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/simple_infer"]
+
+[tool.uv]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.0",
+]

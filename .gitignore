@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local study material, checkpoints, and helper coordination are deliberately
+# local-only. The project relies on their documented layout but never commits it.
+reference/
+learning-doc/
+test-models/
+docs/*
+!docs/architecture.md
