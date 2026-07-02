@@ -983,36 +983,19 @@ contract task before implementing cross-layer workarounds.
 
 ## Testing Strategy
 
-Prefer unit tests at every boundary before relying on real HF models:
+Follow the canonical test-suite structure in
+[`docs/testing.md`](../testing.md). Contributors should place tests under the
+matching package path, for example `tests/unit/config/` for config-only tests
+and `tests/integration/` for cross-layer workflows.
 
-```text
-config tests
-protocol tests
-sampling tests
-input processor tests
-runtime request tests
-kv cache tests
-scheduler tests
-model runner interface / fake runner tests
-worker + executor pass-through tests
-engine core tests with fake executor
-output processor tests
-model loading tests (HF, mocked)
-input tensor builder tests (HF)
-forward + logit extraction tests (HF)
-HF runner integration tests
-LLMEngine component wiring tests
-LLMEngine fake-runner end-to-end tests
-LLMEngine tiny-HF smoke tests
-metrics tests
-```
+Phase 1 tests should not assert real chunked-prefill, KV-budget, streaming, or
+async behavior. They should assert that placeholder contracts are present and
+that the synchronous HF baseline produces tokens through the full framework
+path.
 
-Real HF tests should be marked or structured so normal local test runs do not
-need network access. Use local model paths from `test-models/` when available.
-
-Phase 1 tests should not assert real chunked-prefill, KV-budget, or async
-behavior. They should assert that the placeholder contracts are present and that
-the synchronous HF baseline produces tokens through the full framework path.
+Real HF tests must be opt-in, marked with `hf`, and use local model paths from
+`test-models/` when available. They must not download models during the test
+run.
 
 ## Design Guardrails
 

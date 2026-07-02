@@ -19,10 +19,26 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["src/simple_infer"]
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = [
+    ".venv",
+    "reference",
+    "learning-docs",
+    "test-models",
+]
+markers = [
+    "unit: fast isolated tests for one package or component",
+    "integration: tests that exercise multiple framework layers",
+    "hf: tests requiring local Hugging Face model/tokenizer files",
+    "slow: tests that are too slow for the default local loop",
+]
+
 [tool.uv]
 
 [dependency-groups]
 dev = [
     "pre-commit>=4.6.0",
+    "pytest>=8.0",
     "ruff>=0.10",
 ]
